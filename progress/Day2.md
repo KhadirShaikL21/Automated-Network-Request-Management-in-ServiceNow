@@ -1,40 +1,54 @@
 # Day 2 Progress – ServiceNow Project
 
-## Module Completed: Table & Field Creation
+## Module Completed: Table, Field & Related List Creation
 
 ### Tasks Completed:
-- Created a **custom table** named **Network Database Table**  
-  - Table Label: Network Database Table  
-  - Table Name: u_network_database_table  
-  - Application: Global  
+1. **Created a custom table**:  
+   - Table Label: Network Database Table  
+   - Table Name: u_network_database_table  
+   - Application: Global  
 
-- Added multiple **fields (columns)** to the table, including:
-  - Customer Address (String)  
-  - Request Number (String)  
-  - Requested For (String)  
-  - Assignment Group (Reference → Group table)  
-  - Work Status (String)  
-  - Device Details (String)  
-  - Updates (Integer)  
-  - Assigned To (Reference → User table)  
-  - Date Of Enquiry (Date)  
-  - Customer Document (String)  
-  - Other system-generated fields (Created, Updated, Sys ID, Created by, Updated by, etc.)  
+2. **Added fields to the table**:  
+   - Customer Address (String)  
+   - Request Number (String)  
+   - Requested For (String)  
+   - Assignment Group (Reference → Group table)  
+   - Work Status (String)  
+   - Device Details (String)  
+   - Updates (Integer)  
+   - Assigned To (Reference → User table)  
+   - Date Of Enquiry (Date)  
+   - Customer Document (String)  
+   - (Plus system-generated fields like Sys ID, Created, Updated, etc.)  
 
-- Defined **field properties**:
-  - Max length for string fields (default: 40 / 255 as required).  
-  - Reference type fields for linking with other tables.  
-  - Default values left empty for flexibility.  
-  - Ensured proper naming conventions followed (auto-generated column names).  
+3. **Created a Relationship (Approval Request)**:  
+   - Navigate to **System Definition > Relationships**  
+   - Created a new Relationship:  
+     - Name: Approval Request  
+     - Applies To Table: Network Database Table  
+     - Queries From Table: Approval [sysapproval_approver]  
+     - Script to refine query:  
 
-- Verified the table and fields by opening the **Columns tab** under **System Definition > Tables**.  
+     ```javascript
+     (function refineQuery(current, parent) {
+         current.addQuery('source', parent.getTableName());
+         current.addQuery('document_id', parent.sys_id);
+     })(current, parent);
+     ```
+
+4. **Added Related List to the form**:  
+   - Opened **Form Designer** for Network Database Table.  
+   - Added **Approval Request** related list.  
+   - Verified that the related list appears on the table form.  
 
 ---
 
 ### Evidence:
 Screenshots have been uploaded to `/screenshots/module2/`:
-- `Network Database Table.png` – showing the table creation.  
-- `Creation Of Fields.png` – showing fields added to the table.  
+- `Network Database Table.png` – table creation  
+- `Creation Of Fields.png` – field creation  
+- `Created Relationship.png` – relationship definition  
+- `Adding List To Table.png` – related list added to form  
 
 ---
 
@@ -45,4 +59,4 @@ Screenshots have been uploaded to `/screenshots/module2/`:
 
 ---
 
-✅ **Module 2 (Table & Field Creation) completed successfully.**
+✅ **Module 2 (Table, Field & Related List Creation) completed successfully.**
