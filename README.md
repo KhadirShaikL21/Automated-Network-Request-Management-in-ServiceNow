@@ -187,15 +187,6 @@ A powerful flow was built with the following actions:
 
 ---
 
-## 🌟 Why This Project is Recruiter & Mentor Ready
-✔️ Covers **end-to-end automation** use case.  
-✔️ Solves a **real ITSM problem**.  
-✔️ Documents **design → build → test → fix → outcome** clearly.  
-✔️ Demonstrates **ServiceNow development skills**.  
-✔️ Professional **README + update set + screenshots** for verification.  
-
----
-
 ## 👨‍💻 Author
 **Khadir Shaik**  
 *Java MERN Stack Developer | ServiceNow Enthusiast | AI-Driven Solutions Builder*  
